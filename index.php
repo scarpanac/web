@@ -74,7 +74,7 @@ body {
 <?php
 
 echo $_POST['name'];
-//echo $_REQUEST['name'];
+
 $varSearch = $_POST['name'];
 
 # [START bigquery_simple_app_all]
@@ -82,14 +82,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 # [START bigquery_simple_app_deps]
 use Google\Cloud\BigQuery\BigQueryClient;
-
-# [END bigquery_simple_app_deps]
-
-// get the project ID as the first argument
-
-// if (2 != count($argv)) {
-//     die("Usage: php stackoverflow.php lfanttest1\n");
-// }
 
 $projectId = $argv[1];
 
@@ -122,16 +114,12 @@ if ($queryResults->isComplete()) {
     $arr = array($rows);
     foreach ($rows as $row) {
             $arr = array($row);
-            #print_r($arr);
-            #print '<table border=1><tr><th>id</th><th>title</th><th>date_time</th><th>location</th><th>price</th><th>images</th></tr>';
             foreach ($arr as $value1) {
-            #echo "<td>" . $theCurrentRow["id"] . "</td><td>" . $theCurrentRow["title"] . "</td><td>" . "</td>";
             echo "<tr><td>".$value1["title"]."</td><td>".$value1["date_time"]."</td><td>".$value1["location"]."</td><td>".$value1["price"].'</td><td><img src="'.$value1["images"].'" height="100" width="100"></td>';
             
             }
     }
     print '</table>';
-    //printf('Found %s row(s)' . PHP_EOL, $i);
     
 } else {
     throw new Exception('The query failed to complete');

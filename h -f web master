@@ -1,0 +1,47 @@
+warning: LF will be replaced by CRLF in index.php.
+The file will have its original line endings in your working directory
+[1mdiff --git a/index.php b/index.php[m
+[1mindex 86d5ed2..5b75662 100644[m
+[1m--- a/index.php[m
+[1m+++ b/index.php[m
+[36m@@ -74,7 +74,7 @@[m [mbody {[m
+ <?php[m
+ [m
+ echo $_POST['name'];[m
+[31m-//echo $_REQUEST['name'];[m
+[32m+[m
+ $varSearch = $_POST['name'];[m
+ [m
+ # [START bigquery_simple_app_all][m
+[36m@@ -83,14 +83,6 @@[m [mrequire __DIR__ . '/vendor/autoload.php';[m
+ # [START bigquery_simple_app_deps][m
+ use Google\Cloud\BigQuery\BigQueryClient;[m
+ [m
+[31m-# [END bigquery_simple_app_deps][m
+[31m-[m
+[31m-// get the project ID as the first argument[m
+[31m-[m
+[31m-// if (2 != count($argv)) {[m
+[31m-//     die("Usage: php stackoverflow.php lfanttest1\n");[m
+[31m-// }[m
+[31m-[m
+ $projectId = $argv[1];[m
+ [m
+ # [START bigquery_simple_app_client][m
+[36m@@ -122,16 +114,12 @@[m [mif ($queryResults->isComplete()) {[m
+     $arr = array($rows);[m
+     foreach ($rows as $row) {[m
+             $arr = array($row);[m
+[31m-            #print_r($arr);[m
+[31m-            #print '<table border=1><tr><th>id</th><th>title</th><th>date_time</th><th>location</th><th>price</th><th>images</th></tr>';[m
+             foreach ($arr as $value1) {[m
+[31m-            #echo "<td>" . $theCurrentRow["id"] . "</td><td>" . $theCurrentRow["title"] . "</td><td>" . "</td>";[m
+             echo "<tr><td>".$value1["title"]."</td><td>".$value1["date_time"]."</td><td>".$value1["location"]."</td><td>".$value1["price"].'</td><td><img src="'.$value1["images"].'" height="100" width="100"></td>';[m
+             [m
+             }[m
+     }[m
+     print '</table>';[m
+[31m-    //printf('Found %s row(s)' . PHP_EOL, $i);[m
+     [m
+ } else {[m
+     throw new Exception('The query failed to complete');[m
